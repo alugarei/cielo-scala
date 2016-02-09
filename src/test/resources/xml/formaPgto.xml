@@ -1,0 +1,5 @@
+<forma-pagamento>
+    <bandeira>visa</bandeira>
+    <produto>A</produto>
+    <parcelas>1</parcelas>
+</forma-pagamento>

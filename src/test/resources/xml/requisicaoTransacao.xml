@@ -1,0 +1,43 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<requisicao-transacao id="a97ab62a-7956-41ea-b03f-c2e9f612c293" versao="1.2.1">
+    <dados-ec>
+        <numero>1006993069</numero>
+        <chave>25fbb997438630f30b112d033ce2e621b34f3</chave>
+    </dados-ec>
+    <dados-portador>
+        <numero>4012001038443335</numero>
+        <validade>201508</validade>
+        <indicador>1</indicador>
+        <codigo-seguranca>973</codigo-seguranca>
+    </dados-portador>
+    <dados-pedido>
+        <numero>178148599</numero>
+        <valor>1000</valor>
+        <moeda>986</moeda>
+        <data-hora>2011-12-07T11:43:37</data-hora>
+        <descricao>[origem:10.50.54.156]</descricao>
+        <idioma>PT</idioma>
+    </dados-pedido>
+    <forma-pagamento>
+        <bandeira>visa</bandeira>
+        <produto>A</produto>
+        <parcelas>1</parcelas>
+    </forma-pagamento>
+    <url-retorno>http://localhost/lojaexemplo/retorno.jsp</url-retorno>
+    <autorizar>1</autorizar>
+    <capturar>false</capturar>
+    <campo-livre>Informações extras</campo-livre>
+    <bin>455187</bin>
+    <gerar-token>false</gerar-token>
+    <avs>
+        <![CDATA[
+    <dados-avs>
+      <endereco>Rua Teste AVS</endereco>
+      <complemento>Casa</complemento>
+      <numero>123</numero>
+      <bairro>Vila AVS</bairro>
+      <cep>12345-123</cep>
+    </dados-avs>
+  ]]>
+    </avs>
+</requisicao-transacao>
