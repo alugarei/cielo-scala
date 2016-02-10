@@ -17,6 +17,8 @@ object Cielo {
 
   val endPoint = "https://qasecommerce.cielo.com.br/servicos/ecommwsec.do"
 
+  val cieloDateTimeFmt : String = "aaaa-MM-ddTHH24:mm:ss"
+
   private def getMensagemCielo(xml: Elem) = {
     val writer = new java.io.StringWriter
     XML.write(w = writer, node = xml, enc = "utf-8", xmlDecl = true, doctype = null)
