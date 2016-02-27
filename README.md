@@ -2,6 +2,23 @@
 Cliente em Scala para integração com Webservice da Cielo
 
 
-#### Para publicar projeto (Maven Central)####
+## Para instalar, basta adicionar no build.sbt:
 
-http://www.scala-sbt.org/sbt-pgp/usage.html
+```scala
+libraryDependencies += "com.alugarei" %% "cielo-scala" % "0.3"
+```
+
+## Utilize da seguinte forma
+
+```scala
+val requisicaoSemCaptura = RequisicaoTransacao(
+      dadosEC = dadosEC,
+      dadosPortador = dadosPortador,
+      dadosPedido = dadosPedido,
+      formaPagamento = formaPagamento,
+      urlRetorno = "http://www.exemplo.com",
+      autorizar = AutorizacaoDireta,
+      capturar = false)
+
+val futureTransacao = Cielo.enviarRequisicao(requisicaoSemCaptura)
+```
