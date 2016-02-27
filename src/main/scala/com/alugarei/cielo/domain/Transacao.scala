@@ -1,5 +1,7 @@
 package com.alugarei.cielo.domain
 
+import com.alugarei.cielo.domain.StatusTransacao.StatusTransacao
+
 import scala.xml.{NodeSeq, Node, Elem}
 
 /**
@@ -50,7 +52,7 @@ object Transacao extends XmlDeserializable {
       pan = (xml \ "pan").text,
       dadosPedido = DadosPedido.fromXml((xml \ "dados-pedido").head),
       formaPagamento = FormaPagamento.fromXml((xml \ "forma-pagamento").head),
-      status = StatusTransacao.from((xml \ "status").text.toInt),
+      status = StatusTransacao((xml \ "status").text.toInt),
       autenticacao = autenticacao,
       autorizacao = autorizacao,
       urlAutenticacao = if (urlAutenticacao.isEmpty) None else Some(urlAutenticacao),
