@@ -5,7 +5,7 @@ Cliente em Scala para integração com Webservice da Cielo
 ## Para instalar, basta adicionar no build.sbt:
 
 ```scala
-libraryDependencies += "com.alugarei" %% "cielo-scala" % "0.3.0"
+libraryDependencies += "com.alugarei" %% "cielo-scala" % "0.4.0"
 ```
 
 ## Utilize da seguinte forma
@@ -19,6 +19,7 @@ val requisicaoSemCaptura = RequisicaoTransacao(
       urlRetorno = "http://www.exemplo.com",
       autorizar = AutorizacaoDireta,
       capturar = false)
-
-val futureTransacao = Cielo.enviarRequisicao(requisicaoSemCaptura)
+      
+val cielo = new Cielo(Cielo.endPointTest)
+val futureTransacao = cielo.enviarRequisicao(requisicaoSemCaptura)
 ```
