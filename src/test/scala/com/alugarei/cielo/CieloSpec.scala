@@ -13,6 +13,8 @@ import org.scalatest.time.{Seconds, Span}
  */
 class CieloSpec extends FlatSpec with ScalaFutures {
 
+  val cielo = new Cielo(Cielo.endPointTest)
+
   implicit val defaultPatience =
     PatienceConfig(timeout = Span(30, Seconds), interval = Span(5, Seconds))
 
@@ -43,7 +45,7 @@ class CieloSpec extends FlatSpec with ScalaFutures {
     capturar = true)
 
   "Cielo" should "requisitar pagamento" in {
-    val futureTransacao = Cielo.enviarRequisicao(requisicaoTransacao)
+    val futureTransacao = cielo.enviarRequisicao(requisicaoTransacao)
     whenReady(futureTransacao) { result =>
       result.isRight mustBe true
       result.right.get.status mustBe StatusTransacao.Capturada
@@ -69,12 +71,12 @@ class CieloSpec extends FlatSpec with ScalaFutures {
       autorizar = AutorizacaoDireta,
       capturar = false)
 
-    val futureTransacao = Cielo.enviarRequisicao(requisicaoSemCaptura)
+    val futureTransacao = cielo.enviarRequisicao(requisicaoSemCaptura)
     whenReady(futureTransacao) { transacaoReq =>
       transacaoReq.isRight mustBe true
       transacaoReq.right.get.status mustBe StatusTransacao.Autorizada
       val requisicaoCaptura = RequisicaoCaptura(dadosEC, transacaoReq.right.get.tid, 10d)
-      val futureTransacao = Cielo.enviarRequisicao(requisicaoCaptura)
+      val futureTransacao = cielo.enviarRequisicao(requisicaoCaptura)
       whenReady(futureTransacao) { transacaoCaptura =>
         transacaoCaptura.isRight mustBe true
         transacaoCaptura.right.get.status mustBe StatusTransacao.Capturada
@@ -83,11 +85,11 @@ class CieloSpec extends FlatSpec with ScalaFutures {
   }
 
   it should "consultar transação" in {
-    val futureTransacao = Cielo.enviarRequisicao(requisicaoTransacao)
+    val futureTransacao = cielo.enviarRequisicao(requisicaoTransacao)
     whenReady(futureTransacao) { transacaoReq =>
       transacaoReq.isRight mustBe true
       val requisicaoConsulta = RequisicaoConsulta(transacaoReq.right.get.tid, dadosEC)
-      val futureTransacao = Cielo.enviarRequisicao(requisicaoConsulta)
+      val futureTransacao = cielo.enviarRequisicao(requisicaoConsulta)
       whenReady(futureTransacao) { transacao =>
         transacao.isRight mustBe true
         transacao.right.get.status mustBe StatusTransacao.Capturada
@@ -96,11 +98,11 @@ class CieloSpec extends FlatSpec with ScalaFutures {
   }
 
   it should "cancelar uma transação parcialmente" in {
-    val futureTransacao = Cielo.enviarRequisicao(requisicaoTransacao)
+    val futureTransacao = cielo.enviarRequisicao(requisicaoTransacao)
     whenReady(futureTransacao) { transacaoReq =>
       transacaoReq.isRight mustBe true
       val requisicaoCancelamento =  RequisicaoCancelamento(transacaoReq.right.get.tid, dadosEC, 10d)
-      val futureTransacao = Cielo.enviarRequisicao(requisicaoCancelamento)
+      val futureTransacao = cielo.enviarRequisicao(requisicaoCancelamento)
       whenReady(futureTransacao) { transacao =>
         transacao.isRight mustBe true
         transacao.right.get.status mustBe StatusTransacao.Capturada
@@ -111,11 +113,11 @@ class CieloSpec extends FlatSpec with ScalaFutures {
   }
 
   it should "cancelar uma trascação completamente" in {
-    val futureTransacao = Cielo.enviarRequisicao(requisicaoTransacao)
+    val futureTransacao = cielo.enviarRequisicao(requisicaoTransacao)
     whenReady(futureTransacao) { transacaoReq =>
       transacaoReq.isRight mustBe true
       val requisicaoCancelamento =  RequisicaoCancelamento(transacaoReq.right.get.tid, dadosEC, 20d)
-      val futureTransacao = Cielo.enviarRequisicao(requisicaoCancelamento)
+      val futureTransacao = cielo.enviarRequisicao(requisicaoCancelamento)
       whenReady(futureTransacao) { transacao =>
         transacao.isRight mustBe true
         transacao.right.get.status mustBe StatusTransacao.Cancelada

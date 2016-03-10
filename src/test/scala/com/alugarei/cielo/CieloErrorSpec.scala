@@ -7,9 +7,13 @@ import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
 
 /**
+ * Testes para retorno com erro ao enviar requisição inválida
+ *
  * Created by Gustavo on 09/02/2016.
  */
 class CieloErrorSpec extends FlatSpec with ScalaFutures {
+
+  val cielo = new Cielo(Cielo.endPointTest)
 
   implicit val defaultPatience =
     PatienceConfig(timeout = Span(30, Seconds), interval = Span(5, Seconds))
@@ -44,7 +48,7 @@ class CieloErrorSpec extends FlatSpec with ScalaFutures {
       autorizar = AutorizacaoDireta,
       capturar = true)
 
-    val futureTransacao = Cielo.enviarRequisicao(requisicaoTransacao)
+    val futureTransacao = cielo.enviarRequisicao(requisicaoTransacao)
     whenReady(futureTransacao) { result =>
       result.isLeft mustBe true
       result.left.get.codigo mustBe "002"

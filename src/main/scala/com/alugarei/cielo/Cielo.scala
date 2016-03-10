@@ -11,15 +11,15 @@ import scala.xml.{Elem, XML}
 import scala.concurrent.ExecutionContext.Implicits.global
 
 /**
+ * Classe responsável por enviar as requisições ao webservice Cielo
+ *
+ * @param endPoint Caminho da URL a ser utilizada como EndPoint. O objeto Cielo
+ *                 possui o endereço dos endpoints de teste e produção.
+ *
  * Created by Gustavo on 04/02/2016.
  */
-object Cielo {
-
-  val endPoint = "https://qasecommerce.cielo.com.br/servicos/ecommwsec.do"
-
-  val cieloDateTimeFmt : String = "aaaa-MM-ddTHH24:mm:ss"
-
-  private def getMensagemCielo(xml: Elem) = {
+class Cielo(endPoint: String) {
+  private def getMensagemCielo(xml: Elem): String = {
     val writer = new java.io.StringWriter
     XML.write(w = writer, node = xml, enc = "utf-8", xmlDecl = true, doctype = null)
     s"mensagem=${writer.toString}"
@@ -38,5 +38,14 @@ object Cielo {
       Right(Transacao.fromXml(responseXml))
     }
   }
+}
+
+object Cielo {
+
+  val endPointTest = "https://qasecommerce.cielo.com.br/servicos/ecommwsec.do"
+
+  val endPointProd = "https://ecommerce.cielo.com.br/servicos/ecommwsec.do"
+
+  val cieloDateTimeFmt: String = "aaaa-MM-ddTHH24:mm:ss"
 
 }
