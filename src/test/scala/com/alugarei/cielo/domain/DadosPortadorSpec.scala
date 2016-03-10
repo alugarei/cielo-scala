@@ -15,7 +15,7 @@ class DadosPortadorSpec extends FlatSpec {
        numero = "4012001038443335",
        validade = "201508",
        indicadorCodSeguranca = 1,
-       codigoSeguranca = Some(973),
+       codigoSeguranca = Some("973"),
        nomePortador = None,
        token = None
      )

@@ -17,7 +17,7 @@ class CieloErrorSpec extends FlatSpec with ScalaFutures {
   val dadosPortador = DadosPortador(
     numero = "4012001038443335",
     validade = "201805",
-    codigoSeguranca = Some(123)
+    codigoSeguranca = Some("123")
   )
 
   val dadosEC = DadosEC("1006993069", "25fbb99741c739dd84d7b06ec78c9bac718838630f30b112d033ce2e621b34f3")

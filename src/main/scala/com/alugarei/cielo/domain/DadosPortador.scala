@@ -20,7 +20,7 @@ case class DadosPortador(
                           numero: String,
                           validade: String,
                           indicadorCodSeguranca: Int = 1,
-                          codigoSeguranca: Option[Int],
+                          codigoSeguranca: Option[String],
                           nomePortador: Option[String] = None,
                           token: Option[String] = None) extends XmlSerializable {
 
@@ -29,7 +29,7 @@ case class DadosPortador(
       <numero>{numero}</numero>
       <validade>{validade}</validade>
       <indicador>{indicadorCodSeguranca.toString}</indicador>
-      {if (codigoSeguranca.isDefined) <codigo-seguranca>{codigoSeguranca.get.toString}</codigo-seguranca>}
+      {if (codigoSeguranca.isDefined) <codigo-seguranca>{codigoSeguranca.get}</codigo-seguranca>}
       {if (nomePortador.isDefined) <nome-portador>{nomePortador.get}</nome-portador>}
       {if (token.isDefined) <token>{token.get}</token>}
     </dados-portador>
