@@ -32,7 +32,6 @@ object Cielo {
 
     if (responseXml.label == "erro") {
       val erro = Erro.fromXml(responseXml)
-      println(s"Erro ao enviar requisição: Código ${erro.codigo} Mensagem: ${erro.mensagem}")
       Left(erro)
     }
     else {
