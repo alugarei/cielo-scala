@@ -22,9 +22,7 @@ class DadosPedidoSpec extends FlatSpec {
        softDescriptor = None
      )
      val xml = XML.load(getClass.getResource("/xml/dadosPedido.xml"))
-
      dadosPedido.toXml mustEqual xml
-
    }
 
  }
