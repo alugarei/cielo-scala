@@ -7,7 +7,7 @@ import org.scalatest.concurrent.ScalaFutures
 import org.scalatest.time.{Seconds, Span}
 
 /**
- * Testes para retorno com erro ao enviar requisiÁ„o inv·lida
+ * Testes para retorno com erro ao enviar requisi√ß√£o inv√°lida
  *
  * Created by Gustavo on 09/02/2016.
  */
