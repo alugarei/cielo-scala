@@ -46,6 +46,6 @@ object Cielo {
 
   val endPointProd = "https://ecommerce.cielo.com.br/servicos/ecommwsec.do"
 
-  val cieloDateTimeFmt: String = "aaaa-MM-ddTHH24:mm:ss"
+  val cieloDateTimeFmt: String = "yyyy-MM-dd'T'HH:mm:ss"
 
 }

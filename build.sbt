@@ -1,6 +1,6 @@
 name := """cielo-scala"""
 
-version := "0.4.0"
+version := "0.4.1"
 
 scalaVersion := "2.11.7"
 
