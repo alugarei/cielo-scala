@@ -15,6 +15,7 @@ import scala.xml.Node
  * @param taxaEmbarque Valor destinado a taxa de embarque (voos)
  * @param softDescriptor Texto de até 13 caracteres que será exibido na fatura
  *                       do portador, após o nome do Estabelecimento Comercial.
+ *                       Pode conter apenas: letras, números e espaços em branco
  *
  * Created by Gustavo on 03/02/2016.
  */
@@ -27,6 +28,8 @@ case class DadosPedido(
                         idioma: Option[Idioma] = None,
                         taxaEmbarque: Option[Int] = None,
                         softDescriptor: Option[String] = None) extends XmlSerializable {
+  
+  val softDescriptorLength = 13
 
   def toXml = {
     <dados-pedido>
@@ -37,7 +40,7 @@ case class DadosPedido(
       {if (descricao.isDefined) <descricao>{descricao.get}</descricao>}
       {if (idioma.isDefined) <idioma>{idioma.get.toString}</idioma>}
       {if (taxaEmbarque.isDefined) <taxa-embarque>{taxaEmbarque.get.toString}</taxa-embarque>}
-      {if (softDescriptor.isDefined) <soft-descriptor>{softDescriptor.get}</soft-descriptor> }
+      {if (softDescriptor.isDefined) <soft-descriptor>{softDescriptor.get.take(softDescriptorLength)}</soft-descriptor> }
     </dados-pedido>
   }
 }
