@@ -21,7 +21,7 @@ import scala.xml.Node
  */
 case class DadosPedido(
                         numero: String,
-                        valor: Double,
+                        valor: BigDecimal,
                         moeda: Moeda = Real,
                         dataHora: String,
                         descricao: Option[String] = None,

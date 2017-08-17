@@ -5,7 +5,7 @@ Cliente em Scala para integração com Webservice da Cielo
 ## Para instalar, basta adicionar no build.sbt:
 
 ```scala
-libraryDependencies += "com.alugarei" %% "cielo-scala" % "0.4.0"
+libraryDependencies += "com.alugarei" %% "cielo-scala" % "0.5.0"
 ```
 
 ## Utilize da seguinte forma

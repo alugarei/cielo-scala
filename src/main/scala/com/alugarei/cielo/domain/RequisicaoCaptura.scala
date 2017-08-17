@@ -16,7 +16,7 @@ import scala.xml.Elem
 case class RequisicaoCaptura(
                               dadosEC: DadosEC,
                               tid: String,
-                              valor: Double) extends Requisicao {
+                              valor: BigDecimal) extends Requisicao {
 
   def toXml: Elem =
     <requisicao-captura id={id} versao={versao} xmlns="http://ecommerce.cbmp.com.br">

@@ -2,6 +2,7 @@ package com.alugarei.cielo.domain
 
 import java.util.UUID
 
+import scala.math.BigDecimal.RoundingMode
 import scala.xml.Elem
 
 /**
@@ -19,8 +20,8 @@ abstract class Requisicao extends XmlSerializable {
 
 object Requisicao {
 
-  def valorToCieloString(valor: Double) = (valor * 100).toInt.toString
+  def valorToCieloString(valor: BigDecimal) = (valor.setScale(2, RoundingMode.HALF_EVEN) * 100).toInt.toString
   
-  def valorFromCieloString(valor: String) = (valor.toDouble / 100)
+  def valorFromCieloString(valor: String) = (BigDecimal(valor) / 100)
 
 }

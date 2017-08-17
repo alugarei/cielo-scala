@@ -10,7 +10,7 @@ case class Cancelamento(
                          codigo: Int,
                          mensagem: String,
                          dataHora: String,
-                         valor: Double
+                         valor: BigDecimal
                          )
 
 object Cancelamento extends XmlDeserializable {

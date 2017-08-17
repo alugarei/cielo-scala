@@ -9,7 +9,7 @@ case class Autenticacao(
                          codigo: Int,
                          mensagem: String,
                          dataHora: String,
-                         valor: Double,
+                         valor: BigDecimal,
                          eci: Int)
 
 object Autenticacao extends XmlDeserializable {

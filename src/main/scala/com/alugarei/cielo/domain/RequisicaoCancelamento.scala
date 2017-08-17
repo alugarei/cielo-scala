@@ -8,7 +8,7 @@ import scala.xml.Elem
 case class RequisicaoCancelamento(
                                    tid: String,
                                    dadosEC: DadosEC,
-                                   valor: Double) extends Requisicao {
+                                   valor: BigDecimal) extends Requisicao {
 
   override def toXml: Elem =
     <requisicao-cancelamento id={id} versao={versao}>

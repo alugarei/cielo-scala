@@ -9,8 +9,8 @@ case class Captura(
                     codigo: Int,
                     mensagem: String,
                     dataHora: String,
-                    valor: Double,
-                    taxaEmbarque: Option[Double])
+                    valor: BigDecimal,
+                    taxaEmbarque: Option[BigDecimal])
 
 object Captura extends XmlDeserializable {
 
