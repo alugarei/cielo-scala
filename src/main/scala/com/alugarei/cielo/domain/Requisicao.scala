@@ -20,7 +20,9 @@ abstract class Requisicao extends XmlSerializable {
 
 object Requisicao {
 
-  def valorToCieloString(valor: BigDecimal) = (valor.setScale(2, RoundingMode.HALF_EVEN) * 100).toInt.toString
+  val PRECISAO_VALOR = 2
+
+  def valorToCieloString(valor: BigDecimal) = (valor.setScale(PRECISAO_VALOR, RoundingMode.HALF_EVEN) * 100).toInt.toString
   
   def valorFromCieloString(valor: String) = (BigDecimal(valor) / 100)
 
